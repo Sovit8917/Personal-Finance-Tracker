@@ -17,8 +17,8 @@ export default function Layout() {
 
   return (
     <div className="layout">
+      {/* Desktop Sidebar */}
       <aside className="sidebar">
-        {/* Logo */}
         <div style={{ marginBottom: 32 }}>
           <div style={{ fontFamily: 'var(--font-display)', fontSize: 22, fontWeight: 800, color: '#fff' }}>
             Fin<span style={{ color: 'var(--accent)' }}>Track</span>
@@ -26,7 +26,6 @@ export default function Layout() {
           <div style={{ fontSize: 11, color: 'var(--muted)', marginTop: 2 }}>Personal Finance</div>
         </div>
 
-        {/* Nav */}
         <nav style={{ flex: 1 }}>
           {navItems.map(item => (
             <NavLink
@@ -53,7 +52,6 @@ export default function Layout() {
           ))}
         </nav>
 
-        {/* User */}
         <div style={{ borderTop: '1px solid var(--border)', paddingTop: 16, marginTop: 16 }}>
           <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 4 }}>{user?.name}</div>
           <div style={{ fontSize: 11, color: 'var(--muted)', marginBottom: 12 }}>{user?.email}</div>
@@ -63,9 +61,34 @@ export default function Layout() {
         </div>
       </aside>
 
+      {/* ✅ NEW: Mobile Top Header */}
+      <header className="mobile-header">
+        <div style={{ fontFamily: 'var(--font-display)', fontSize: 20, fontWeight: 800, color: '#fff' }}>
+          Fin<span style={{ color: 'var(--accent)' }}>Track</span>
+        </div>
+        <button className="btn btn-ghost btn-sm" onClick={handleLogout}>
+          Logout
+        </button>
+      </header>
+
       <main className="main-content">
         <Outlet />
       </main>
+
+      {/* ✅ NEW: Mobile Bottom Navigation */}
+      <nav className="mobile-bottom-nav">
+        {navItems.map(item => (
+          <NavLink
+            key={item.to}
+            to={item.to}
+            end={item.end}
+            className={({ isActive }) => `mobile-nav-item ${isActive ? 'active' : ''}`}
+          >
+            <span className="mobile-nav-icon">{item.icon}</span>
+            <span className="mobile-nav-label">{item.label}</span>
+          </NavLink>
+        ))}
+      </nav>
     </div>
   );
 }
