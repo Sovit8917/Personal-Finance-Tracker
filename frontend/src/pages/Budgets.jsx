@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import api from '../utils/api';
 import Modal from '../components/Modal';
 import { formatCurrency, EXPENSE_CATEGORIES, CATEGORY_COLORS, getCurrentMonthYear } from '../utils/helpers';
+import { IconTarget } from '@tabler/icons-react';
 
 const FIELDS = [
   { name: 'category', label: 'Category', type: 'select', options: EXPENSE_CATEGORIES, required: true },
@@ -85,7 +86,7 @@ export default function Budgets() {
       {/* Budget Cards */}
       {loading ? <div className="spinner" /> : budgets.length === 0 ? (
         <div className="card" style={{ textAlign: 'center', padding: 60 }}>
-          <div style={{ fontSize: 40, marginBottom: 16 }}>🎯</div>
+          <div style={{ fontSize: 40, marginBottom: 16 }}><IconTarget size={80} /></div>
           <div style={{ fontFamily: 'var(--font-display)', fontSize: 18, fontWeight: 700, marginBottom: 8 }}>No budgets set</div>
           <div style={{ color: 'var(--muted)', marginBottom: 20 }}>Set a budget for {MONTHS[month - 1]} {year} to track your spending</div>
           <button className="btn btn-primary" onClick={() => { setModal(true); setError(''); }}>+ Set First Budget</button>

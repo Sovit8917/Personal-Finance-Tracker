@@ -12,7 +12,7 @@ const transactionRoutes = require('./routes/transactions');
 const app = express();
 
 // Middleware
-app.use(cors({ origin: 'https://personal-finance-tracker-sovit.netlify.app', credentials: true }));
+app.use(cors({ origin: 'https://personal-finance-tracker-sovit.netlify.app', credentials: true })); //https://personal-finance-tracker-sovit.netlify.app
 app.use(express.json());
 
 // Routes
