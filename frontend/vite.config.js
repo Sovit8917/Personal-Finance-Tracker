@@ -7,7 +7,7 @@ export default defineConfig({
     port: 5173,
     proxy: {
       '/api': {
-        target: 'https://personal-finance-tracker-eo0x.onrender.com/',
+        target: 'https://personal-finance-tracker-eo0x.onrender.com', //https://personal-finance-tracker-eo0x.onrender.com/
         changeOrigin: true,
       },
     },

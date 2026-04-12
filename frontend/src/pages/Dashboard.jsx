@@ -48,7 +48,7 @@ export default function Dashboard() {
       {/* Header */}
       <div style={{ marginBottom: 28 }}>
         <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 28, fontWeight: 800 }}>
-          Welcome back, {user?.name?.split(' ')[0]} 👋
+          Welcome back, {user?.name?.split(' ')[0]} 
         </h1>
         <p style={{ color: 'var(--muted)', marginTop: 4 }}>Here's your financial overview</p>
       </div>
