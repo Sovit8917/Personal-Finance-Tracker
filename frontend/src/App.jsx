@@ -8,6 +8,8 @@ import Expenses from './pages/Expenses';
 import Income from './pages/Income';
 import Budgets from './pages/Budgets';
 import Transactions from './pages/Transactions';
+import ForgotPassword from './pages/ForgotPassword';
+import ResetPassword from './pages/ResetPassword';
 
 function PrivateRoute({ children }) {
   const { user, loading } = useAuth();
@@ -28,6 +30,8 @@ export default function App() {
         <Routes>
           <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} />
           <Route path="/register" element={<PublicRoute><Register /></PublicRoute>} />
+          <Route path="/forgot-password" element={<PublicRoute><ForgotPassword /></PublicRoute>} />
+          <Route path="/reset-password" element={<PublicRoute><ResetPassword /></PublicRoute>} />
           <Route path="/" element={<PrivateRoute><Layout /></PrivateRoute>}>
             <Route index element={<Dashboard />} />
             <Route path="expenses" element={<Expenses />} />
