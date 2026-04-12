@@ -142,7 +142,7 @@ export default function Expenses() {
                     </td>
                     <td><span className="badge badge-yellow">{exp.category}</span></td>
                     <td style={{ color: 'var(--muted)' }}>{formatDate(exp.date)}</td>
-                    <td style={{ fontFamily: 'var(--font-mono)', color: 'var(--red)', fontWeight: 600 }}>{formatCurrency(exp.amount)}</td>
+                    <td style={{ fontFamily: 'var(--font-mono)', color: 'var(--red)', fontWeight: 500 }}>{formatCurrency(exp.amount)}</td>
                     <td>
                       <div style={{ display: 'flex', gap: 8 }}>
                         <button className="btn btn-ghost btn-sm" onClick={() => openEdit(exp)}>Edit</button>

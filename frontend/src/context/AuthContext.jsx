@@ -21,22 +21,29 @@ export function AuthProvider({ children }) {
     }
   }, []);
 
-  const login = async (email, password) => {
-    const res = await api.post('/auth/login', { email, password });
-    const { token, user } = res.data;
+  const _saveSession = (token, user) => {
     localStorage.setItem('token', token);
     api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     setUser(user);
-    return user;
+  };
+
+  const login = async (email, password) => {
+    const res = await api.post('/auth/login', { email, password });
+    _saveSession(res.data.token, res.data.user);
+    return res.data.user;
   };
 
   const register = async (name, email, password) => {
     const res = await api.post('/auth/register', { name, email, password });
-    const { token, user } = res.data;
-    localStorage.setItem('token', token);
-    api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-    setUser(user);
-    return user;
+    _saveSession(res.data.token, res.data.user);
+    return res.data.user;
+  };
+
+  // Google OAuth — pass the accessToken from @react-oauth/google
+  const googleLogin = async (accessToken) => {
+    const res = await api.post('/auth/google', { accessToken });
+    _saveSession(res.data.token, res.data.user);
+    return res.data.user;
   };
 
   const logout = () => {
@@ -46,7 +53,7 @@ export function AuthProvider({ children }) {
   };
 
   return (
-    <AuthContext.Provider value={{ user, loading, login, register, logout }}>
+    <AuthContext.Provider value={{ user, loading, login, register, googleLogin, logout }}>
       {children}
     </AuthContext.Provider>
   );

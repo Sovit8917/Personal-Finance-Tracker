@@ -90,7 +90,7 @@ export default function Transactions() {
                     <td style={{ color: 'var(--muted)' }}>{formatDate(tx.date)}</td>
                     <td style={{
                       fontFamily: 'var(--font-mono)',
-                      fontWeight: 600,
+                      fontWeight: 500,
                       color: tx.type === 'income' ? 'var(--accent)' : 'var(--red)',
                     }}>
                       {tx.type === 'income' ? '+' : '-'}{formatCurrency(tx.amount)}

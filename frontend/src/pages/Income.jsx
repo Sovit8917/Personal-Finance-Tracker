@@ -119,7 +119,7 @@ export default function Income() {
                     <td><span className="badge badge-green">{item.source}</span></td>
                     <td style={{ color: 'var(--muted)' }}>{item.frequency}</td>
                     <td style={{ color: 'var(--muted)' }}>{formatDate(item.date)}</td>
-                    <td style={{ fontFamily: 'var(--font-mono)', color: 'var(--accent)', fontWeight: 600 }}>{formatCurrency(item.amount)}</td>
+                    <td style={{ fontFamily: 'var(--font-mono)', color: 'var(--accent)', fontWeight: 500 }}>{formatCurrency(item.amount)}</td>
                     <td>
                       <div style={{ display: 'flex', gap: 8 }}>
                         <button className="btn btn-ghost btn-sm" onClick={() => openEdit(item)}>Edit</button>
